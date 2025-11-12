@@ -43,13 +43,35 @@ function onIncrementSize(value){
     renderMeme()
 }
 
+function onAddText(){
+    addText()
+    clearInputs()
+    renderMeme()
+}
+
+function onDeleteText(){
+    removeText()
+    renderText()
+    renderMeme()
+}
+
+function onNextText(){
+    nextText()
+    renderInputs()
+    renderMeme()
+}
+
+function renderInputs(){
+    const line = getLine()
+    document.querySelector('.text-input').value = line.txt
+    document.querySelector('.color-picker').value = line.color
+    // add font
+}
+
 function renderMeme(){
-    document.querySelector('.editor-tab').classList.remove('hidden')
-    document.querySelector('.gallery-tab').classList.add('hidden')
     setCanvas()
     const meme = getMeme()
     const img = new Image()
-    console.log(getImgbyID(meme.selectedImgId))
     const imgSrc = getImgbyID(meme.selectedImgId).url
     img.onload = () => {
         onImageReady(img)
@@ -70,7 +92,7 @@ function setCanvas() {
 
 function drawText() {
     const lines = getMeme().lines
-    lines.every((line, idx) => {
+    lines.forEach((line, idx) => {
         gCtx.lineWidth = 2
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = line.color
@@ -97,12 +119,10 @@ function getCanvasSize() {
 function clearInputs(){
     document.querySelector('.color-picker').value = '#ffffff'
     document.querySelector('.select-font').value = 'impact'
-    document.querySelector('.text-input').value = '' //    setLineTxt(elTxt.value)
-    //renderMeme()
+    document.querySelector('.text-input').value = ''
 }
 
 function onDownloadMeme(elLink){
-    console.log(elLink)
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 }

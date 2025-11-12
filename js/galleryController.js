@@ -1,14 +1,9 @@
 'use strict'
 
-function renderGallery(){
-    document.querySelector('.editor-tab').classList.add('hidden')
-    document.querySelector('.gallery-tab').classList.remove('hidden')
-}
-
 function onImgSelect(id){
     setImg(id)
     clearInputs()
-    renderMeme()
+    onEditor()
 }
 
 function loadGallery(){

@@ -13,15 +13,15 @@
         <div class="logo">MEME MAKER</div>
         <nav class="main-nav">
             <ul class="main-nav-list space-between clean-list flex">
-            <li class="flex align-center center"><button onclick="onGallery()" class="gallery-btn">Gallery</button></li>
-            <li class="flex align-center center"><button onclick="onAbout()" class="about-btn">About</button></li>
-        </ul>
+                <li class="flex align-center center"><button onclick="onGallery()" class="gallery-btn">Gallery</button></li>
+                <li class="flex align-center center"><button onclick="onAbout()" class="about-btn">About</button></li>
+            </ul>
       </nav>
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
     
 
-    <section class="editor-tab hidden">
+    <section class="editor-tab tab hidden">
         <section class="canvas-container">
             <canvas width="800" height="800" 
             onmousedown="onDown(event)" 
@@ -32,9 +32,9 @@
         <section class="editor-container flex">
             <input class="text-input" placeholder="I sometimes eat falafel" oninput="onTextChange(this)">
             <div class="text-actions flex">
-                <button>Next Text</button>
-                <button>Add Text</button>
-                <button>Delete Text</button>
+                <button onclick="onNextText()">Next Text</button>
+                <button onclick="onAddText()">Add Text</button>
+                <button onclick="onDeleteText()">Delete Text</button>
             </div>
             <div class="text-appearance grid">
                 <button onclick="onIncrementSize(2)">Increase Size</button>
@@ -50,13 +50,15 @@
                 <input class="color-picker" type="color" value="#ffffff" oninput="onColorPicked(this)">
             </div>
             <div class="export-btns-container flex">
-                <a href="#" class="btn" onclick="onShareMeme(this)" download="my-img.jpg"></a>
+                <a href="#" class="btn" onclick="onShareMeme(this)"></a>
                 <a href="#" class="btn" onclick="onDownloadMeme(this)" download="my-img.jpg"></a>
             </div>
         </section>
     </section>
 
-    <section class="gallery-tab grid"></section>
+    <section class="gallery-tab tab grid"></section>
+    <section class="about-tab tab grid hidden"></section>
+
     <script src="js/services/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

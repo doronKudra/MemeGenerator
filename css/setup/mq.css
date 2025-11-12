@@ -1,4 +1,4 @@
-@media (max-width: 850px) {
+@media (max-width: 1600px) {
 
 
   .main-nav {
@@ -36,4 +36,22 @@
     }
   }
 
+}
+
+@media (min-width: 1600px) {
+  .btn-toggle-menu{
+    display: none;
+  }
+  .editor-tab{
+    display: flex;
+    place-self: center;
+    flex-direction: row;
+  }
+  .canvas-container{
+    width: 800px
+  }
+  .editor-container{
+    width: 800px;
+    place-self: center;
+  }
 }

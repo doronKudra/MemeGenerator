@@ -1,7 +1,7 @@
 'use strict'
 
 const NUM_IMAGES = 18
-var gImgs = [] //{ id: 1, url: 'img/1.jpg', keywords: ['trump', 'funny'] }, { id: 5, url: 'img/5.jpg', keywords: ['success', 'happy', 'baby'] }
+var gImgs = []
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -9,7 +9,7 @@ var gMeme = {
         {
             txt: 'I sometimes eat Falafel',
             size: 40,
-            color: 'white'
+            color: '#ffffff'
         }
     ]
 }
@@ -27,7 +27,7 @@ function setImg(id) {
         {
             txt: 'I sometimes eat Falafel',
             size: 40,
-            color: 'white'
+            color: '#ffffff'
         }
     ]
 }
@@ -37,12 +37,13 @@ function getMeme() {
 }
 
 function setLineTxt(txt){
+    if(!gMeme.lines.length) return
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function loadImages(){
     for(var i = 1; i <= NUM_IMAGES; i++){
-        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] }) // make keyword db?
+        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] }) // TODO: implement keyword bank
     }
 }
 
@@ -58,4 +59,29 @@ function setSize(diff){
     const newSize = gMeme.lines[gMeme.selectedLineIdx].size + diff
     if(newSize < 2 || newSize > 100) return
     gMeme.lines[gMeme.selectedLineIdx].size = newSize
+}
+
+function nextText(){
+    if(!gMeme.lines.length) return
+    gMeme.selectedLineIdx++
+    gMeme.selectedLineIdx %= gMeme.lines.length
+}
+
+function addText(){
+    gMeme.lines.push({
+            txt: 'Your Text Here',
+            size: 40,
+            color: '#ffffff'
+    })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function removeText(){
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    if(!gMeme.lines.length) return // if deleted last line we dont need to change selected line
+    gMeme.selectedLineIdx--
+}
+
+function getLine(){
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
