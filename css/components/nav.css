@@ -5,7 +5,7 @@
 .main-nav button{
     background: none;
     border: none;
-    padding: 25px;
+    padding: 50px;
 }
 
 .main-nav button:hover{
@@ -14,7 +14,8 @@
 }
 
 .logo{
-  padding: 25px;
+  padding: 50px;
+  font-size: 40px;
 }
 
 .btn-toggle-menu {
@@ -23,6 +24,6 @@
   background-color: var(--clr-primary--1);
   color: var(--clr-primary-1);
   padding: 0.3em;
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
 }

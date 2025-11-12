@@ -5,6 +5,7 @@
 
 .text-appearance{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px;
     row-gap: 10px;
     column-gap: 3%;
 }
@@ -20,9 +21,30 @@
 .export-btns-container{
     justify-content: center;
     gap: 20px;
+    margin-top: 20px;
 }
 
 .text-actions{
     justify-content: center;
     gap: 20px;
+    
+}
+
+.text-input{
+    width: 90%;
+    align-self: center;
+    margin: 20px;
+    background-color: lightgray;
+}
+
+.export-btns-container a:last-child{
+    padding: 40px;
+    padding-inline: 80px;
+    background: green;
+}
+
+.export-btns-container a:first-child{
+    padding: 40px;
+    padding-inline: 80px;
+    background: blue;
 }

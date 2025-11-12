@@ -24,13 +24,23 @@ function onTextChange(elTxt){
     renderMeme()
 }
 
-
 function onShareCanvas(elLink){
 
 }
 
 function onDownloadCanvas(elLink){
 
+}
+
+function onColorPicked(elColor){
+    const value = elColor.value
+    setColor(value)
+    renderMeme()
+}
+
+function onIncrementSize(value){
+    setSize(value)
+    renderMeme()
 }
 
 function renderMeme(){
@@ -61,7 +71,7 @@ function setCanvas() {
 function drawText() {
     const lines = getMeme().lines
     lines.every((line, idx) => {
-        gCtx.lineWidth = 1
+        gCtx.lineWidth = 2
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = line.color
         gCtx.font = line.size + 'px IMPACT'
@@ -89,4 +99,14 @@ function clearInputs(){
     document.querySelector('.select-font').value = 'impact'
     document.querySelector('.text-input').value = '' //    setLineTxt(elTxt.value)
     //renderMeme()
+}
+
+function onDownloadMeme(elLink){
+    console.log(elLink)
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+function onShareMeme(elLink){
+
 }

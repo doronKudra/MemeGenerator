@@ -10,7 +10,7 @@
     <div class="main-screen" onclick="toggleMenu()"></div>
 
     <header>
-        <div class="logo">MEME GENERATOR</div>
+        <div class="logo">MEME MAKER</div>
         <nav class="main-nav">
             <ul class="main-nav-list space-between clean-list flex">
             <li class="flex align-center center"><button onclick="onGallery()" class="gallery-btn">Gallery</button></li>
@@ -23,22 +23,22 @@
 
     <section class="editor-tab hidden">
         <section class="canvas-container">
-            <canvas width="400" height="400" 
+            <canvas width="800" height="800" 
             onmousedown="onDown(event)" 
             onmouseup="onUp(event)"
             onmousemove="onDrag(event)">
             </canvas>
         </section>
         <section class="editor-container flex">
-            <input class="text-input" oninput="onTextChange(this)">
+            <input class="text-input" placeholder="I sometimes eat falafel" oninput="onTextChange(this)">
             <div class="text-actions flex">
                 <button>Next Text</button>
                 <button>Add Text</button>
                 <button>Delete Text</button>
             </div>
             <div class="text-appearance grid">
-                <button>Increase Size</button>
-                <button>Decrease Size</button>
+                <button onclick="onIncrementSize(2)">Increase Size</button>
+                <button onclick="onIncrementSize(-2)">Decrease Size</button>
                 <button>Align Left</button>
                 <button>Align Center</button>
                 <button>Align Right</button>
@@ -47,15 +47,11 @@
                     <option value="other">Other</option>
                 </select>
                 <button>Underline</button>
-                <input class="color-picker" type="color" value="#ffffff">
+                <input class="color-picker" type="color" value="#ffffff" oninput="onColorPicked(this)">
             </div>
             <div class="export-btns-container flex">
-                <button>
-                    <a href="#" class="btn" onclick="onShareCanvas(this)" download="my-img.jpg">Share</a>
-                </button>
-                <button>
-                    <a href="#" class="btn" onclick="onDownloadCanvas(this)" download="my-img.jpg">Download</a>
-                </button>
+                <a href="#" class="btn" onclick="onShareMeme(this)" download="my-img.jpg"></a>
+                <a href="#" class="btn" onclick="onDownloadMeme(this)" download="my-img.jpg"></a>
             </div>
         </section>
     </section>

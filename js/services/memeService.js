@@ -1,14 +1,14 @@
 'use strict'
 
 const NUM_IMAGES = 18
-var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['trump', 'funny'] }, { id: 5, url: 'img/5.jpg', keywords: ['success', 'happy', 'baby'] }]
+var gImgs = [] //{ id: 1, url: 'img/1.jpg', keywords: ['trump', 'funny'] }, { id: 5, url: 'img/5.jpg', keywords: ['success', 'happy', 'baby'] }
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
+            size: 40,
             color: 'white'
         }
     ]
@@ -26,7 +26,7 @@ function setImg(id) {
     gMeme.lines = [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
+            size: 40,
             color: 'white'
         }
     ]
@@ -42,10 +42,20 @@ function setLineTxt(txt){
 
 function loadImages(){
     for(var i = 1; i <= NUM_IMAGES; i++){
-        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] })
+        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] }) // make keyword db?
     }
 }
 
 function getImages(){
     return gImgs
+}
+
+function setColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function setSize(diff){
+    const newSize = gMeme.lines[gMeme.selectedLineIdx].size + diff
+    if(newSize < 2 || newSize > 100) return
+    gMeme.lines[gMeme.selectedLineIdx].size = newSize
 }
