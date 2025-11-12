@@ -1,12 +1,15 @@
 
 header{
     display: flex;
-    position: fixed;
     justify-self: center;
     background-color: #79c0d8;
     justify-content: space-between;
     width: 95%;
-    top: 0;
+}
+
+canvas{
+  display: flex;
+  justify-self: center;
 }
 
 .navbar{
