@@ -5,7 +5,16 @@
 .main-nav button{
     background: none;
     border: none;
-    padding-inline: 40px;
+    padding: 25px;
+}
+
+.main-nav button:hover{
+  background-color: blue;
+  color: white;
+}
+
+.logo{
+  padding: 25px;
 }
 
 .btn-toggle-menu {

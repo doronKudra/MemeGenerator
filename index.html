@@ -21,7 +21,7 @@
     </header>
     
 
-    <section class="editor-tab">
+    <section class="editor-tab hidden">
         <section class="canvas-container">
             <canvas width="400" height="400" 
             onmousedown="onDown(event)" 
@@ -47,12 +47,8 @@
                     <option value="other">Other</option>
                 </select>
                 <button>Underline</button>
-                <input class="color-picker" type="color">
+                <input class="color-picker" type="color" value="#ffffff">
             </div>
-            <select class="select-emoji">
-                <option value="😀">😀</option>
-                <option value="🤣">🤣</option>
-            </select>
             <div class="export-btns-container flex">
                 <button>
                     <a href="#" class="btn" onclick="onShareCanvas(this)" download="my-img.jpg">Share</a>
@@ -64,10 +60,9 @@
         </section>
     </section>
 
-    <section class="gallery-tab grid">
-        
-    </section>
+    <section class="gallery-tab grid"></section>
     <script src="js/services/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
     <script src="js/main.js"></script>
 </body>

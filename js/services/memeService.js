@@ -1,5 +1,6 @@
 'use strict'
 
+const NUM_IMAGES = 18
 var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['trump', 'funny'] }, { id: 5, url: 'img/5.jpg', keywords: ['success', 'happy', 'baby'] }]
 var gMeme = {
     selectedImgId: 5,
@@ -19,8 +20,16 @@ function getImgbyID(id) {
     return gImgs.find((img) => img.id === id)
 }
 
-function setImg() {
-
+function setImg(id) {
+    gMeme.selectedImgId = id
+    gMeme.selectedLineIdx = 0
+    gMeme.lines = [
+        {
+            txt: 'I sometimes eat Falafel',
+            size: 20,
+            color: 'white'
+        }
+    ]
 }
 
 function getMeme() {
@@ -29,4 +38,14 @@ function getMeme() {
 
 function setLineTxt(txt){
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
+}
+
+function loadImages(){
+    for(var i = 1; i <= NUM_IMAGES; i++){
+        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] })
+    }
+}
+
+function getImages(){
+    return gImgs
 }

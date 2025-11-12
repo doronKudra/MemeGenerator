@@ -1,9 +1,18 @@
 'use strict'
 
 function onInit(){
-    renderMeme()
+    loadImages()
+    loadGallery()
 }
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
+}
+
+function onGallery() {
+    renderGallery()
+}
+
+function onAbout(){
+
 }

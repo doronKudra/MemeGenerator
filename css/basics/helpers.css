@@ -31,3 +31,7 @@
 .bordered-layout {
   border-inline: 1px solid #ccc;
 }
+
+.hidden {
+    display: none;
+}

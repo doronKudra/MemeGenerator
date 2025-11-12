@@ -34,6 +34,8 @@ function onDownloadCanvas(elLink){
 }
 
 function renderMeme(){
+    document.querySelector('.editor-tab').classList.remove('hidden')
+    document.querySelector('.gallery-tab').classList.add('hidden')
     setCanvas()
     const meme = getMeme()
     const img = new Image()
@@ -80,4 +82,11 @@ function drawText() {
 function getCanvasSize() {
     const { width, height } = gElCanvas
     return { width, height }
+}
+
+function clearInputs(){
+    document.querySelector('.color-picker').value = '#ffffff'
+    document.querySelector('.select-font').value = 'impact'
+    document.querySelector('.text-input').value = '' //    setLineTxt(elTxt.value)
+    //renderMeme()
 }
