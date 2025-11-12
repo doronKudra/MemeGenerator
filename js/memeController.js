@@ -63,6 +63,10 @@ function onNextText(){
 
 function renderInputs(){
     const line = getLine()
+    if(!line){
+        clearInputs()
+        return
+    }
     document.querySelector('.text-input').value = line.txt
     document.querySelector('.color-picker').value = line.color
     // add font
