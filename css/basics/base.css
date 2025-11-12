@@ -1,0 +1,16 @@
+header{
+    display: flex;
+    justify-self: center;
+    background-color: #79c0d8;
+    justify-content: space-between;
+    width: 95%;
+}
+
+canvas{
+  display: flex;
+  justify-self: center;
+}
+
+button:hover{
+    cursor: pointer;
+}

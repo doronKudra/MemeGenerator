@@ -1,0 +1,33 @@
+.grid{
+    display: grid;
+}
+
+.flex{
+    display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* list item helpers */
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* layout helpers  */
+
+.bordered-layout {
+  border-inline: 1px solid #ccc;
+}

@@ -1,0 +1,39 @@
+@media (max-width: 840px) {
+
+
+  .main-nav {
+    display: grid;
+    grid-template-rows: 0fr;
+    align-content: end;
+    align-items: end;
+
+    position: fixed;
+
+    background-color: #292929;
+    top: 60px;
+    left: 2.5%;
+    width: 95%;
+
+    overflow: hidden;
+
+    transition: grid-template-rows .6s;
+
+    body.menu-open & {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    min-height: 0;
+
+    >li {
+      border-bottom: 1px solid #ccc;
+
+      >button {
+        height: 100px;
+      }
+    }
+  }
+
+}

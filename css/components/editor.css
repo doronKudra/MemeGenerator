@@ -1,0 +1,28 @@
+.editor-container{
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-appearance{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 3%;
+}
+
+.select-font{
+    grid-column: 1 / 4;
+}
+
+.color-picker{
+    width: 100%;
+}
+
+.export-btns-container{
+    justify-content: center;
+    gap: 20px;
+}
+
+.text-actions{
+    justify-content: center;
+    gap: 20px;
+}
