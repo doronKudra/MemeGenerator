@@ -51,7 +51,7 @@ function onAddText(){
 
 function onDeleteText(){
     removeText()
-    renderText()
+    renderInputs()
     renderMeme()
 }
 
