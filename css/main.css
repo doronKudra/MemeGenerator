@@ -8,6 +8,9 @@
 @import url('../css/components/editor.css');
 @import url('../css/components/gallery.css');
 @import url('../css/components/nav.css');
+@import url('../css/components/canvas.css');
+@import url('../css/components/icon.css');
+@import url('../css/components/about.css');
 
 /* MQ */
 @import url('../css/setup/mq.css');

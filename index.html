@@ -4,9 +4,10 @@
 
 <head>
     <link href="css/main.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fc9a7be77e.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="onInit()" onresize="onResize()">
+<body onload="onInit()">
     <div class="main-screen" onclick="toggleMenu()"></div>
 
     <header>
@@ -20,28 +21,26 @@
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
     </header>
     
-
-    <section class="editor-tab tab hidden">
+    <section class="editor-tab tab grid hidden">
         <section class="canvas-container">
-            <canvas width="800" height="800" 
-            onmousedown="onDown(event)" 
-            onmouseup="onUp(event)"
-            onmousemove="onDrag(event)">
-            </canvas>
+            <canvas class="main-canvas" width="800" height="800" ></canvas>
+            <canvas class="overlay-canvas" width="800" height="800" onmousedown="onMouseDown(event)" 
+            onmouseup="onMouseUp(event)"
+            onmousemove="onMouseDrag(event)"></canvas>
         </section>
         <section class="editor-container flex">
             <input class="text-input" placeholder="Your Text Here" oninput="onTextChange(this)">
             <div class="text-actions flex">
-                <button onclick="onNextText()">Next Text</button>
-                <button onclick="onAddText()">Add Text</button>
-                <button onclick="onDeleteText()">Delete Text</button>
+                <button class="icon fa-solid fa-up-down" onclick="onNextText()"></button>
+                <button class="icon fa-solid fa-plus" onclick="onAddText()"></button>
+                <button class="icon fa-solid fa-trash" onclick="onDeleteText()"></button>
             </div>
             <div class="text-appearance grid">
-                <button onclick="onIncrementSize(2)">Increase Size</button>
-                <button onclick="onIncrementSize(-2)">Decrease Size</button>
-                <button onclick="onAlignText(-1)">Align Left</button>
-                <button onclick="onAlignText(0)">Align Center</button>
-                <button onclick="onAlignText(1)">Align Right</button>
+                <button onclick="onIncrementSize(2)" class="icon fa-solid fa-up-right-and-down-left-from-center"></button>
+                <button onclick="onIncrementSize(-2)" class="icon fa-solid fa-down-left-and-up-right-to-center"></button>
+                <button onclick="onAlignText(-1)" class="icon fa-solid fa-align-left"></button>
+                <button onclick="onAlignText(0)" class="icon fa-solid fa-align-center"></button>
+                <button class="icon fa-solid fa-align-right" onclick="onAlignText(1)"></button>
                 <select onclick="onChangeFont(this)" class="select-font">
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
@@ -51,18 +50,21 @@
                     <option value="Georgia">Georgia</option>
                     <option value="Courier New">Courier New</option>
                 </select>
-                <button>Underline</button>
-                <input class="color-picker" type="color" value="#ffffff" oninput="onColorPicked(this)">
+                <label for="create-color">
+                    <i class="icon fa-solid fa-palette"></i>
+                    <input type="color" id="create-color" value="#ffffff" class="color-picker" oninput="onColorPicked(this)" style="width: 0; height: 0; position: absolute;">
+                </label>
             </div>
             <div class="export-btns-container flex">
-                <a href="#" class="btn" onclick="onShareMeme(this)"></a>
-                <a href="#" class="btn" onclick="onDownloadMeme(this)" download="my-img.jpg"></a>
+                <a href="#" class="icon fa-solid fa-download" onclick="onDownloadMeme(this)" download="my-img.jpg"></a>
             </div>
         </section>
     </section>
 
     <section class="gallery-tab tab grid"></section>
-    <section class="about-tab tab grid hidden"></section>
+    <section class="about-tab tab grid hidden">
+        <p>Made by Doron Kudra</p>
+    </section>
 
     <script src="js/services/memeService.js"></script>
     <script src="js/galleryController.js"></script>

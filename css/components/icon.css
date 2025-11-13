@@ -1,0 +1,24 @@
+
+.icon{
+    font-size: 60px;
+    border-radius: 20px;
+    min-width: 100px;
+    min-height: 100px;
+    color: white;
+    outline: 1px solid blue;
+    text-shadow:
+        -1px -1px 0 #000, /* Top-left shadow */
+         1px -1px 0 #000, /* Top-right shadow */
+        -1px  1px 0 #000, /* Bottom-left shadow */
+         1px  1px 0 #000; /* Bottom-right shadow */
+}
+
+label{
+    display: flex;
+    place-content: center;
+}
+
+i{
+    background-color: darkcyan;
+    place-content: center;
+}

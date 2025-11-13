@@ -7,15 +7,12 @@ header{
 }
 
 body {
+  background-color: rgb(59, 59, 59);
   margin: 0;
   height: 100vh;
   width: 100vw;
 }
 
-canvas{
-  display: flex;
-  justify-self: center;
-}
 
 button:hover{
     cursor: pointer;
@@ -29,6 +26,12 @@ img{
 button{
   font-size: 40px;
   padding: 10px;
+  border-radius: 20px;
+  background-color: aquamarine;
+}
+
+button:active{
+  background-color: blue;
 }
 
 select{

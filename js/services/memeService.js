@@ -11,6 +11,7 @@ var gMeme = {
             size: 40,
             color: '#ffffff',
             font: 'impact',
+            side: 0,
         }
     ]
 }
@@ -30,6 +31,7 @@ function setImg(id) {
             size: 40,
             color: '#ffffff',
             font: 'impact',
+            side: 0,
         }
     ]
 }
@@ -54,10 +56,12 @@ function getImages(){
 }
 
 function setColor(color){
+    if(!gMeme.lines.length) return
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
 function setSize(diff){
+    if(!gMeme.lines.length) return
     const newSize = gMeme.lines[gMeme.selectedLineIdx].size + diff
     if(newSize < 2 || newSize > 100) return
     gMeme.lines[gMeme.selectedLineIdx].size = newSize
@@ -75,6 +79,7 @@ function addText(){
             size: 40,
             color: '#ffffff',
             font: 'impact',
+            side: 0,
     })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -86,22 +91,34 @@ function removeText(){
     gMeme.selectedLineIdx--
 }
 
-function getLine(){
-    return gMeme.lines[gMeme.selectedLineIdx]
+function getLine(idx = gMeme.selectedLineIdx){
+    if(!gMeme.lines.length) return
+    return gMeme.lines[idx]
 }
 
 function getLineIdx(){
+    if(!gMeme.lines.length) return
     return gMeme.selectedLineIdx
 }
 
 function setLineMetrics(idx,metrics){
+    if(!gMeme.lines.length) return
     gMeme.lines[idx].metrics = metrics
 }
 
 function setLineIdx(idx){
+    if(!gMeme.lines.length) return
     gMeme.selectedLineIdx = idx
 }
 
 function setFont(font){
+    if(!gMeme.lines.length) return
     gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setLineAlignment(x,offset,side,idx=gMeme.selectedLineIdx){
+    gMeme.lines[idx].side = side
+    if(!gMeme.lines.length) return
+    // if(!gMeme.lines[gMeme.selectedLineIdx].metrics) gMeme.lines[gMeme.selectedLineIdx].metrics = {x:x}
+    gMeme.lines[idx].metrics.x = x + offset
 }
