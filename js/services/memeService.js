@@ -7,9 +7,9 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Your Text Here',
             size: 40,
-            color: '#ffffff'
+            color: '#ffffff',
         }
     ]
 }
@@ -25,7 +25,7 @@ function setImg(id) {
     gMeme.selectedLineIdx = 0
     gMeme.lines = [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Your Text Here',
             size: 40,
             color: '#ffffff'
         }
@@ -79,9 +79,22 @@ function addText(){
 function removeText(){
     gMeme.lines.splice(gMeme.selectedLineIdx,1)
     if(!gMeme.lines.length) return // if deleted last line we dont need to change selected line
+    if(gMeme.selectedLineIdx === 0) return
     gMeme.selectedLineIdx--
 }
 
 function getLine(){
     return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function getLineIdx(){
+    return gMeme.selectedLineIdx
+}
+
+function setLineMetrics(idx,metrics){
+    gMeme.lines[idx].metrics = metrics
+}
+
+function setLineIdx(idx){
+    gMeme.selectedLineIdx = idx
 }
