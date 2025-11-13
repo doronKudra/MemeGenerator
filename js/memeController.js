@@ -14,20 +14,19 @@ function onDown(event) {
 
 function onUp(event) {
     gIsDrag = false
-    console.log(event)
     const { offsetX, offsetY } = event
     const lines = getMeme().lines
-    for(var i = lines.length-1;i>=0;i--){ // TODO: need to update metrics each render
-        const leftBorder = lines[i].metrics.x - (lines[i].metrics.width / 2)
-        const rightBorder = lines[i].metrics.x + (lines[i].metrics.width / 2)
-        const topBorder = lines[i].metrics.y + (lines[i].metrics.height / 2)
-        const botBorder = lines[i].metrics.y - (lines[i].metrics.height / 2)
-        console.log(topBorder)
-        console.log(botBorder)
-        if(leftBorder< offsetX && rightBorder > offsetX
+    for(var i = lines.length-1;i>=0;i--){
+        const leftBorder = lines[i].metrics.x - (lines[i].metrics.width / 2) + 5
+        const rightBorder = lines[i].metrics.x + (lines[i].metrics.width / 2) - 5
+        const topBorder = lines[i].metrics.y + (lines[i].metrics.height / 2) + 5
+        const botBorder = lines[i].metrics.y - (lines[i].metrics.height / 2) - 5
+        if(leftBorder < offsetX && rightBorder > offsetX
             && topBorder > offsetY && botBorder < offsetY){
                 setLineIdx(i)
                 renderMeme()
+                renderInputs()
+                return
             }
     }
     return
@@ -134,6 +133,16 @@ function drawText() {
             }
             setLineMetrics(idx, newMetrics)
         }
+        else{
+            const newMetrics = {
+                x: line.metrics.x,
+                y: line.metrics.y ,
+                width: textMetrics.width,
+                height: textMetrics.actualBoundingBoxDescent + textMetrics.actualBoundingBoxAscent
+            }
+            setLineMetrics(idx, newMetrics)
+        }
+        
         gCtx.fillText(line.txt, line.metrics.x, line.metrics.y)
         gCtx.strokeText(line.txt, line.metrics.x, line.metrics.y)
         if (idx === getLineIdx()) {
@@ -149,7 +158,6 @@ function drawText() {
 }
 
 function drawRect({ x, y, width, height }) {
-
     gCtx.strokeStyle = 'red'
     gCtx.strokeRect(x, y, width, height)
     //   gCtx.fillStyle = ''
