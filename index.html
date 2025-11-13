@@ -39,12 +39,17 @@
             <div class="text-appearance grid">
                 <button onclick="onIncrementSize(2)">Increase Size</button>
                 <button onclick="onIncrementSize(-2)">Decrease Size</button>
-                <button>Align Left</button>
-                <button>Align Center</button>
-                <button>Align Right</button>
-                <select class="select-font">
-                    <option value="impact">IMPACT</option>
-                    <option value="other">Other</option>
+                <button onclick="onAlignText(-1)">Align Left</button>
+                <button onclick="onAlignText(0)">Align Center</button>
+                <button onclick="onAlignText(1)">Align Right</button>
+                <select onclick="onChangeFont(this)" class="select-font">
+                    <option value="impact">Impact</option>
+                    <option value="arial">Arial</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Courier New">Courier New</option>
                 </select>
                 <button>Underline</button>
                 <input class="color-picker" type="color" value="#ffffff" oninput="onColorPicked(this)">

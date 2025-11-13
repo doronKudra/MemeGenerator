@@ -10,6 +10,7 @@ var gMeme = {
             txt: 'Your Text Here',
             size: 40,
             color: '#ffffff',
+            font: 'impact',
         }
     ]
 }
@@ -27,7 +28,8 @@ function setImg(id) {
         {
             txt: 'Your Text Here',
             size: 40,
-            color: '#ffffff'
+            color: '#ffffff',
+            font: 'impact',
         }
     ]
 }
@@ -71,7 +73,8 @@ function addText(){
     gMeme.lines.push({
             txt: 'Your Text Here',
             size: 40,
-            color: '#ffffff'
+            color: '#ffffff',
+            font: 'impact',
     })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -97,4 +100,8 @@ function setLineMetrics(idx,metrics){
 
 function setLineIdx(idx){
     gMeme.selectedLineIdx = idx
+}
+
+function setFont(font){
+    gMeme.lines[gMeme.selectedLineIdx].font = font
 }

@@ -36,6 +36,11 @@ function onDrag(event) {
     if(!gIsDrag) return
 }
 
+function onAlignText(side){
+    // y same x change
+    setLineCoords(x,y)
+}
+
 function onTextChange(elTxt) {
     setLineTxt(elTxt.value)
     renderMeme()
@@ -49,6 +54,11 @@ function onColorPicked(elColor) {
 
 function onIncrementSize(value) {
     setSize(value)
+    renderMeme()
+}
+
+function onChangeFont(elSelect){
+    setFont(elSelect.value)
     renderMeme()
 }
 
@@ -78,6 +88,7 @@ function renderInputs() {
     }
     document.querySelector('.text-input').value = line.txt
     document.querySelector('.color-picker').value = line.color
+    document.querySelector('.select-font').value = line.font
     // add font
 }
 
@@ -109,7 +120,7 @@ function drawText() {
         gCtx.lineWidth = 2
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = line.color
-        gCtx.font = line.size + 'px IMPACT'
+        gCtx.font = line.size + 'px ' + line.font
         gCtx.textAlign = 'center'
         gCtx.textBaseline = 'middle'
         var { width, height } = getCanvasSize()
@@ -156,6 +167,7 @@ function drawText() {
         }
     })
 }
+
 
 function drawRect({ x, y, width, height }) {
     gCtx.strokeStyle = 'red'
