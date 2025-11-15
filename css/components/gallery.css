@@ -2,7 +2,7 @@
 .gallery-tab{
   margin-top: 40px;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 400px));
-  grid-template-rows: repeat(auto-fit, minmax(min-content, 400px));
+  grid-template-rows: 100px repeat(auto-fit, minmax(min-content, 400px));
   row-gap: 20px;
   column-gap: 20px;
   justify-content: center;
@@ -15,4 +15,14 @@
 
 .gallery-img{
   cursor: pointer
+}
+
+.search-bar {
+  display: flex;
+  grid-column: 1 / -1; /* Spans from the first column line to the last */
+  justify-content: center;
+}
+
+.rand-btn{
+  margin: auto;
 }

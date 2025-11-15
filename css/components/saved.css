@@ -1,0 +1,24 @@
+.saved-tab {
+    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 600px));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 600px));
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+
+    row-gap: 40px;
+    justify-items: fit-content;
+    height: 100%;
+    width: 100%;
+
+    place-items: center;
+}
+
+.delete-btn{
+    display: flex;
+    color: red;
+    width: 200px;
+    place-content: center;
+    justify-self: center;
+    background-color: white;
+}

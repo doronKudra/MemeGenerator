@@ -99,14 +99,23 @@ function renderInputs() {
     // add font
 }
 
-function renderMeme() {
+function renderMeme(meme = getMeme(), isSaved,i) {
+    console.log(meme)
     setCanvas()
-    const meme = getMeme()
     const img = new Image()
     const imgSrc = getImgbyID(meme.selectedImgId).url
     img.onload = () => {
         onImageReady(img)
-        drawText()
+        drawText(meme.lines)
+        if(isSaved){
+            const elSavedTab = document.querySelector('.saved-tab')
+            const imgContent = gElCanvas.toDataURL('image/jpeg')
+            elSavedTab.innerHTML += `<div>
+            <img src="${imgContent}" onclick="onEditMeme(${i})"></img>
+            <button style="display: flex; width: 200px" class="delete-btn fa-solid fa-trash" onclick="onDeleteMeme(${i})"></button>
+            </div>`
+            
+        }
     }
     img.src = imgSrc
 }
@@ -124,8 +133,7 @@ function setCanvas() {
     gCtxOverlay.canvas.width = 800;
 }
 
-function drawText() {
-    const lines = getMeme().lines
+function drawText(lines) {
     lines.forEach((line, idx) => {
         gCtx.lineWidth = 1
         gCtx.strokeStyle = 'black'
@@ -197,7 +205,28 @@ function onDownloadMeme(elLink) { // fix download showing edit box
     elLink.href = imgContent
 }
 
-function onShareMeme(elLink) {
-
+function onLoadMemes(){
+    loadMemes()
+    document.querySelector('.saved-tab').innerHTML = ''
+    const savedMemes = getSavedMemes()
+    if(!savedMemes || savedMemes.length === 0) {
+        document.querySelector('.saved-tab').innerHTML = '<p>Nothing Saved :(</p>'
+        return
+    }
+    for(var i = 0; i < savedMemes.length; i++){
+        renderMeme(savedMemes[i],true,i)
+    }
 }
 
+function onSaveMeme(){
+    saveMeme()
+}
+
+function onEditMeme(idx){
+    editMeme(idx)
+    onEditor()
+}
+
+function onDeleteMeme(idx){
+    deleteMeme(idx)
+}

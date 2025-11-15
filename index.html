@@ -15,7 +15,9 @@
         <nav class="main-nav">
             <ul class="main-nav-list space-between clean-list flex">
                 <li class="flex align-center center"><button onclick="onGallery()" class="gallery-btn">Gallery</button></li>
+                <li class="flex align-center center"><button onclick="onSaved()" class="saved-btn">Memes</button></li>
                 <li class="flex align-center center"><button onclick="onAbout()" class="about-btn">About</button></li>
+                
             </ul>
       </nav>
         <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
@@ -57,15 +59,33 @@
             </div>
             <div class="export-btns-container flex">
                 <a href="#" class="icon fa-solid fa-download" onclick="onDownloadMeme(this)" download="my-img.jpg"></a>
+                <a href="#" class="icon fa-solid fa-floppy-disk" onclick="onSaveMeme(this)"></a>
             </div>
         </section>
     </section>
 
-    <section class="gallery-tab tab grid"></section>
+    <section class="gallery-tab tab grid">
+        <nav class="search-bar">
+            <button class="rand-btn" onclick="onRandomMeme()">I'm flexible</button>
+            <input list="keywords" class="text-input text-search" placeholder="Your Text Here" oninput="onSearch(this)">
+        </nav>
+    </section>
     <section class="about-tab tab grid hidden">
         <p>Made by Doron Kudra</p>
     </section>
+    <section class="saved-tab tab grid hidden">
 
+    </section>
+
+    <datalist id="keywords">
+        <option value="funny">
+        <option value="happy">
+        <option value="cute">
+        <option value="sad">
+        <option value="political">
+    </datalist>
+    <script src="js/services/storageService.js"></script>
+    <script src="js/services/utils.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

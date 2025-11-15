@@ -5,6 +5,7 @@ var gEditor = false
 function onInit(){
     loadImages()
     loadGallery()
+
 }
 
 function toggleMenu() {
@@ -40,6 +41,13 @@ function onEditor(){
     clearTabs()
     renderMeme()
     showTab('.editor-tab')
+}
+
+function onSaved(){
+    gEditor = false
+    clearTabs()
+    onLoadMemes()
+    showTab('.saved-tab')
 }
 
 function showTab(str){

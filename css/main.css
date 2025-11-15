@@ -11,6 +11,7 @@
 @import url('../css/components/canvas.css');
 @import url('../css/components/icon.css');
 @import url('../css/components/about.css');
+@import url('../css/components/saved.css');
 
 /* MQ */
 @import url('../css/setup/mq.css');

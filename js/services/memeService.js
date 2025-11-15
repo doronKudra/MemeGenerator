@@ -2,9 +2,11 @@
 
 const NUM_IMAGES = 18
 var gImgs = []
+var gSavedMemes = []
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
+    isSaved: false,
     lines: [
         {
             txt: 'Your Text Here',
@@ -16,7 +18,7 @@ var gMeme = {
     ]
 }
 
-var gKeywordSearchCountMap = { 'funny': 12, 'happy': 16, 'baby': 2 }
+var gCurrEditIdx
 
 function getImgbyID(id) {
     return gImgs.find((img) => img.id === id)
@@ -46,8 +48,9 @@ function setLineTxt(txt){
 }
 
 function loadImages(){
+    var keywordBank = [['trump','funny','political'],['dog','cute'],['baby','dog','cute'],['cat','tired','sleep','cute'],['baby','success','happy'],['funny','history','explain','conspiracy'],['shocked','baby','sad','cute'],['explain','funny'],['evil','baby','cute'],['obama','laugh','funny','political'],['boxing','kissing'],['point','blame'],['cheers','success','drink','leonardo'],['matrix','morpheus'],['explain','funny'],['laugh','funny'],['putin','two','political'],['woody','toystory','sad']]
     for(var i = 1; i <= NUM_IMAGES; i++){
-        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: ['trump', 'funny'] }) // TODO: implement keyword bank
+        gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: keywordBank[i-1] }) // TODO: implement keyword bank
     }
 }
 
@@ -121,4 +124,34 @@ function setLineAlignment(x,offset,side,idx=gMeme.selectedLineIdx){
     if(!gMeme.lines.length) return
     // if(!gMeme.lines[gMeme.selectedLineIdx].metrics) gMeme.lines[gMeme.selectedLineIdx].metrics = {x:x}
     gMeme.lines[idx].metrics.x = x + offset
+}
+
+function saveMeme(){
+    if(!gMeme.isSaved){ 
+        gMeme.isSaved = true
+        gSavedMemes.push(JSON.parse(JSON.stringify(gMeme)))
+    }
+    else gSavedMemes[gCurrEditIdx] = JSON.parse(JSON.stringify(gMeme))
+    gMeme.isSaved = false
+    saveToStorage('memes',gSavedMemes)
+}
+
+function loadMemes(){
+    gSavedMemes = loadFromStorage('memes')
+    if(!gSavedMemes) gSavedMemes = []
+}
+
+function deleteMeme(idx){
+    gSavedMemes.splice(idx,1)
+    saveToStorage('memes',gSavedMemes)
+    onLoadMemes()
+}
+
+function editMeme(idx){
+    gCurrEditIdx = idx
+    gMeme = gSavedMemes[idx]
+}
+
+function getSavedMemes(){
+    return gSavedMemes
 }

@@ -1,5 +1,6 @@
 .navbar{
     margin-right: 20%;
+    
 }
 
 .main-nav button{
@@ -15,8 +16,14 @@
 }
 
 .logo{
-  padding: 50px;
-  font-size: 40px;
+  padding: 25px;
+  font-size: 80px;
+  font-family: Impact;
+  color: blue;
+}
+
+.main-nav{
+  border-radius: 20px;
 }
 
 .btn-toggle-menu {
