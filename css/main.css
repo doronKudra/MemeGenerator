@@ -1,17 +1,17 @@
 
 /* BASICS */
-@import url('../css/basics/base.css');
-@import url('../css/basics/layout.css');
-@import url('../css/basics/helpers.css');
+@import url('basics/base.css');
+@import url('basics/layout.css');
+@import url('basics/helpers.css');
 
 /* COMPONENTS */
-@import url('../css/components/editor.css');
-@import url('../css/components/gallery.css');
-@import url('../css/components/nav.css');
-@import url('../css/components/canvas.css');
-@import url('../css/components/icon.css');
-@import url('../css/components/about.css');
-@import url('../css/components/saved.css');
+@import url('components/editor.css');
+@import url('components/gallery.css');
+@import url('components/nav.css');
+@import url('components/canvas.css');
+@import url('components/icon.css');
+@import url('components/about.css');
+@import url('components/saved.css');
 
 /* MQ */
-@import url('../css/setup/mq.css');
+@import url('setup/mq.css');

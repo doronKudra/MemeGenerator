@@ -48,7 +48,25 @@ function setLineTxt(txt){
 }
 
 function loadImages(){
-    var keywordBank = [['trump','funny','political'],['dog','cute'],['baby','dog','cute'],['cat','tired','sleep','cute'],['baby','success','happy'],['funny','history','explain','conspiracy'],['shocked','baby','sad','cute'],['explain','funny'],['evil','baby','cute'],['obama','laugh','funny','political'],['boxing','kissing'],['point','blame'],['cheers','success','drink','leonardo'],['matrix','morpheus'],['explain','funny'],['laugh','funny'],['putin','two','political'],['woody','toystory','sad']]
+    var keywordBank = [
+        ['trump','funny','political'],
+        ['dog','cute'],
+        ['baby','dog','cute'],
+        ['cat','tired','sleep','cute'],
+        ['baby','success','happy'],
+        ['funny','history','explain','conspiracy'],
+        ['shocked','baby','sad','cute'],
+        ['explain','funny'],
+        ['evil','baby','cute'],
+        ['obama','laugh','funny','political'],
+        ['boxing','kissing'],
+        ['point','blame'],
+        ['cheers','success','drink','leonardo'],
+        ['matrix','morpheus'],
+        ['explain','funny'],
+        ['laugh','funny'],
+        ['putin','two','political'],
+        ['woody','toystory','sad']]
     for(var i = 1; i <= NUM_IMAGES; i++){
         gImgs.push({ id: i, url: `img/${i}.jpg`, keywords: keywordBank[i-1] }) // TODO: implement keyword bank
     }
@@ -88,6 +106,7 @@ function addText(){
 }
 
 function removeText(){
+    if(!gMeme.lines.length) return
     gMeme.lines.splice(gMeme.selectedLineIdx,1)
     if(!gMeme.lines.length) return // if deleted last line we dont need to change selected line
     if(gMeme.selectedLineIdx === 0) return
@@ -96,6 +115,7 @@ function removeText(){
 
 function getLine(idx = gMeme.selectedLineIdx){
     if(!gMeme.lines.length) return
+    if(idx >= gMeme.lines.length) return
     return gMeme.lines[idx]
 }
 
@@ -106,11 +126,13 @@ function getLineIdx(){
 
 function setLineMetrics(idx,metrics){
     if(!gMeme.lines.length) return
+    if(idx >= gMeme.lines.length) return
     gMeme.lines[idx].metrics = metrics
 }
 
 function setLineIdx(idx){
     if(!gMeme.lines.length) return
+    if(idx >= gMeme.lines.length) return
     gMeme.selectedLineIdx = idx
 }
 
@@ -120,9 +142,8 @@ function setFont(font){
 }
 
 function setLineAlignment(x,offset,side,idx=gMeme.selectedLineIdx){
-    gMeme.lines[idx].side = side
     if(!gMeme.lines.length) return
-    // if(!gMeme.lines[gMeme.selectedLineIdx].metrics) gMeme.lines[gMeme.selectedLineIdx].metrics = {x:x}
+    gMeme.lines[idx].side = side
     gMeme.lines[idx].metrics.x = x + offset
 }
 
@@ -153,5 +174,6 @@ function editMeme(idx){
 }
 
 function getSavedMemes(){
+    console.log(gSavedMemes)
     return gSavedMemes
 }

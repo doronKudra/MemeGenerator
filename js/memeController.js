@@ -13,7 +13,6 @@ function onMouseDown(event) {
 function onMouseUp(event) {
     gIsDrag = false
     const { offsetX, offsetY } = event
-    console.log(event)
     const lines = getMeme().lines
     for (var i = lines.length - 1; i >= 0; i--) {
         const leftBorder = lines[i].metrics.x - (lines[i].metrics.width / 2) + 5
@@ -40,11 +39,11 @@ function onAlignText(side) {
     renderMeme()
 }
 
-function wrapMemeText(side,idx = getLineIdx()) {
+function wrapMemeText(side, idx = getLineIdx()) {
     const line = getLine(idx)
     if (!line) return
     const textMetrics = gCtx.measureText(line.txt)
-    setLineAlignment((gElCanvas.width / 2) + ((gElCanvas.width / 2) * side), side * textMetrics.actualBoundingBoxLeft * -1 - (side * 7), side,idx)
+    setLineAlignment((gElCanvas.width / 2) + ((gElCanvas.width / 2) * side), side * textMetrics.actualBoundingBoxLeft * -1 - (side * 7), side, idx)
 }
 
 function onTextChange(elTxt) {
@@ -96,25 +95,23 @@ function renderInputs() {
     document.querySelector('.text-input').value = line.txt
     document.querySelector('.color-picker').value = line.color
     document.querySelector('.select-font').value = line.font
-    // add font
 }
 
-function renderMeme(meme = getMeme(), isSaved,i) {
-    console.log(meme)
+function renderMeme(meme = getMeme(), isSaved, idx) {
     setCanvas()
     const img = new Image()
     const imgSrc = getImgbyID(meme.selectedImgId).url
     img.onload = () => {
         onImageReady(img)
         drawText(meme.lines)
-        if(isSaved){
+        if (isSaved) {
             const elSavedTab = document.querySelector('.saved-tab')
             const imgContent = gElCanvas.toDataURL('image/jpeg')
             elSavedTab.innerHTML += `<div>
-            <img src="${imgContent}" onclick="onEditMeme(${i})"></img>
-            <button style="display: flex; width: 200px" class="delete-btn fa-solid fa-trash" onclick="onDeleteMeme(${i})"></button>
+            <img src="${imgContent}" onclick="onEditMeme(${idx})"></img>
+            <button style="display: flex; width: 200px" class="delete-btn fa-solid fa-trash" onclick="onDeleteMeme(${idx})"></button>
             </div>`
-            
+
         }
     }
     img.src = imgSrc
@@ -145,23 +142,20 @@ function drawText(lines) {
         const textMetrics = gCtx.measureText(line.txt)
         var newMetrics
         if (!line.metrics) {
-            if (idx === 0) {
-                height = height / 16
-            }
-            else if (idx === 1) {
-                height = height * 15 / 16
-            }
-            else {
-                height = height / 2
-            }
+            if (idx === 0) height = height / 16
+            else if (idx === 1) height = height * 15 / 16
+            else height = height / 2
+
             width = width / 2
-            newMetrics = getMetricsObj(width, height, textMetrics.width, textMetrics.actualBoundingBoxDescent + textMetrics.actualBoundingBoxAscent)
+            newMetrics = getMetricsObj(width, height, textMetrics.width,
+                textMetrics.actualBoundingBoxDescent + textMetrics.actualBoundingBoxAscent)
             setLineMetrics(idx, newMetrics)
         }
         else {
-            newMetrics = getMetricsObj(line.metrics.x, line.metrics.y, textMetrics.width, textMetrics.actualBoundingBoxDescent + textMetrics.actualBoundingBoxAscent)
+            newMetrics = getMetricsObj(line.metrics.x, line.metrics.y, textMetrics.width, 
+                textMetrics.actualBoundingBoxDescent + textMetrics.actualBoundingBoxAscent)
             setLineMetrics(idx, newMetrics)
-            wrapMemeText(line.side,idx)
+            wrapMemeText(line.side, idx)
         }
 
         gCtx.fillText(line.txt, line.metrics.x, line.metrics.y)
@@ -175,13 +169,11 @@ function drawText(lines) {
     })
 }
 
-
 function drawRect({ x, y, width, height }) {
     gCtxOverlay.fillStyle = ''
     gCtxOverlay.strokeStyle = 'red'
     gCtxOverlay.strokeRect(x, y, width, height)
 }
-
 
 function getCanvasSize() {
     const { width, height } = gElCanvas
@@ -205,28 +197,28 @@ function onDownloadMeme(elLink) { // fix download showing edit box
     elLink.href = imgContent
 }
 
-function onLoadMemes(){
+function onLoadMemes() {
     loadMemes()
     document.querySelector('.saved-tab').innerHTML = ''
     const savedMemes = getSavedMemes()
-    if(!savedMemes || savedMemes.length === 0) {
+    if (!savedMemes || savedMemes.length === 0) {
         document.querySelector('.saved-tab').innerHTML = '<p>Nothing Saved :(</p>'
         return
     }
-    for(var i = 0; i < savedMemes.length; i++){
-        renderMeme(savedMemes[i],true,i)
+    for (var i = 0; i < savedMemes.length; i++) {
+        renderMeme(savedMemes[i], true, i)
     }
 }
 
-function onSaveMeme(){
+function onSaveMeme() {
     saveMeme()
 }
 
-function onEditMeme(idx){
+function onEditMeme(idx) {
     editMeme(idx)
     onEditor()
 }
 
-function onDeleteMeme(idx){
+function onDeleteMeme(idx) {
     deleteMeme(idx)
 }

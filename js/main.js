@@ -5,10 +5,9 @@ var gEditor = false
 function onInit(){
     loadImages()
     loadGallery()
-
 }
 
-function toggleMenu() {
+function onToggleMenu() {
     document.body.classList.toggle('menu-open')
     const canvases = document.querySelectorAll('canvas')
     if(gEditor) document.querySelector('.editor-tab').classList.toggle('hidden')
@@ -31,9 +30,10 @@ function onAbout(){
 
 function clearTabs(){
     const elTabs = document.querySelectorAll('.tab')
+    document.body.classList.remove('menu-open')
     elTabs.forEach(tab => {
         tab.classList.add('hidden')
-    });
+    })
 }
 
 function onEditor(){
@@ -41,6 +41,10 @@ function onEditor(){
     clearTabs()
     renderMeme()
     showTab('.editor-tab')
+    const canvases = document.querySelectorAll('canvas')
+    canvases.forEach((canvas) => {
+        canvas.classList.remove('hidden')
+    })
 }
 
 function onSaved(){
@@ -52,4 +56,8 @@ function onSaved(){
 
 function showTab(str){
     document.querySelector(str).classList.remove('hidden')
+}
+
+function onResize(){
+    
 }

@@ -4,11 +4,10 @@
 
 <head>
     <link href="css/main.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fc9a7be77e.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="onInit()">
-    <div class="main-screen" onclick="toggleMenu()"></div>
+    <div class="fade-screen" onclick="onToggleMenu()" onresize="onResize()"></div>
 
     <header>
         <div class="logo">MEME MAKER</div>
@@ -20,7 +19,7 @@
                 
             </ul>
       </nav>
-        <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+        <button class="btn-toggle-menu" onclick="onToggleMenu()">☰</button>
     </header>
     
     <section class="editor-tab tab grid hidden">
@@ -30,8 +29,9 @@
             onmouseup="onMouseUp(event)"
             onmousemove="onMouseDrag(event)"></canvas>
         </section>
+
         <section class="editor-container flex">
-            <input class="text-input" placeholder="Your Text Here" oninput="onTextChange(this)">
+            <input class="text-input" placeholder="Your Text Here" oninput="onTextChange(this)"/>
             <div class="text-actions flex">
                 <button class="icon fa-solid fa-up-down" onclick="onNextText()"></button>
                 <button class="icon fa-solid fa-plus" onclick="onAddText()"></button>
@@ -54,7 +54,7 @@
                 </select>
                 <label for="create-color">
                     <i class="icon fa-solid fa-palette"></i>
-                    <input type="color" id="create-color" value="#ffffff" class="color-picker" oninput="onColorPicked(this)" style="width: 0; height: 0; position: absolute;">
+                    <input type="color" id="create-color" value="#ffffff" class="color-picker" oninput="onColorPicked(this)" style="width: 0; height: 0; position: absolute;"/>
                 </label>
             </div>
             <div class="export-btns-container flex">
@@ -67,15 +67,15 @@
     <section class="gallery-tab tab grid">
         <nav class="search-bar">
             <button class="rand-btn" onclick="onRandomMeme()">I'm flexible</button>
-            <input list="keywords" class="text-input text-search" placeholder="Your Text Here" oninput="onSearch(this)">
+            <input list="keywords" class="text-input text-search" placeholder="Search Templates" oninput="onSearch(this)">
         </nav>
     </section>
+
     <section class="about-tab tab grid hidden">
         <p>Made by Doron Kudra</p>
     </section>
-    <section class="saved-tab tab grid hidden">
 
-    </section>
+    <section class="saved-tab tab grid hidden"></section>
 
     <datalist id="keywords">
         <option value="funny">
@@ -84,6 +84,8 @@
         <option value="sad">
         <option value="political">
     </datalist>
+
+    <script src="https://kit.fontawesome.com/fc9a7be77e.js" crossorigin="anonymous"></script>
     <script src="js/services/storageService.js"></script>
     <script src="js/services/utils.js"></script>
     <script src="js/services/memeService.js"></script>

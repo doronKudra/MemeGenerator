@@ -38,5 +38,4 @@ function onSearch(elSearch){
     filteredImgs.forEach((img) => {
         document.querySelector('.num-'+img.id).classList.remove('hidden')
     })
-    
 }
