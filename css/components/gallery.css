@@ -1,13 +1,11 @@
 
 .gallery-tab{
-  margin-top: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(min-content, 400px));
-  grid-template-rows: 100px repeat(auto-fit, minmax(min-content, 400px));
-  column-gap: 20px;
+  margin-top: 2.5rem;
+  column-gap: 1.25rem;
   justify-content: center;
   justify-items: fit-content;
 
-  row-gap: 40px;
+  row-gap: 2.5rem;
   width: 100%;
 }
 
@@ -22,5 +20,10 @@
 }
 
 .rand-btn{
-  margin: auto;
+  height: 100%;
+}
+
+.text-search{
+  height: 100%;
+  margin-left: 1.25rem;
 }

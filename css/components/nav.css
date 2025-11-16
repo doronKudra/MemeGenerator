@@ -6,7 +6,6 @@
 .main-nav button{
     background: none;
     border: none;
-    padding: 50px;
     z-index: 4;
 }
 
@@ -16,14 +15,16 @@
 }
 
 .logo{
-  padding: 25px;
-  font-size: 80px;
+  padding: 1.5rem;
+  font-size: 4rem;
+  place-self: center;
   font-family: Impact;
   color: blue;
 }
 
 .main-nav{
   border-radius: 20px;
+  width: 100%;
 }
 
 .btn-toggle-menu {
@@ -32,6 +33,6 @@
   background-color: var(--clr-primary--1);
   color: var(--clr-primary-1);
   padding: 0.3em;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
 }

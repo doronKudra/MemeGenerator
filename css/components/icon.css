@@ -1,11 +1,10 @@
 
 .icon{
-    font-size: 60px;
-    border-radius: 20px;
-    min-width: 100px;
-    min-height: 100px;
+    font-size: 5rem;
+    border-radius: 1.25rem;
+    min-width: 0.625rem;
     color: white;
-    outline: 1px solid blue;
+    outline: 2px solid rgb(0, 0, 0);
     text-shadow:
         -1px -1px 0 #000, /* Top-left shadow */
          1px -1px 0 #000, /* Top-right shadow */
@@ -21,4 +20,17 @@ label{
 i{
     background-color: darkcyan;
     place-content: center;
+    width: 100px;
+}
+
+.fa-trash{
+    background-color: red;
+}
+
+.fa-plus{
+    background-color: rgb(1, 233, 1);
+}
+
+.fa-up-down{
+    background-color: rgb(0, 119, 255);
 }

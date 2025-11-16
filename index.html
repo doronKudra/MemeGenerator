@@ -3,6 +3,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="css/main.css" rel="stylesheet">
 </head>
 
@@ -22,10 +24,10 @@
         <button class="btn-toggle-menu" onclick="onToggleMenu()">☰</button>
     </header>
     
-    <section class="editor-tab tab grid hidden">
+    <section class="editor-tab tab hidden">
         <section class="canvas-container">
-            <canvas class="main-canvas" width="800" height="800" ></canvas>
-            <canvas class="overlay-canvas" width="800" height="800" onmousedown="onMouseDown(event)" 
+            <canvas class="main-canvas" width="600" height="600" ></canvas>
+            <canvas class="overlay-canvas" width="600" height="600" onmousedown="onMouseDown(event)" 
             onmouseup="onMouseUp(event)"
             onmousemove="onMouseDrag(event)"></canvas>
         </section>

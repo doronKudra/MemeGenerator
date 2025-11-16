@@ -14,6 +14,7 @@
 .canvas-container {
     display: flex;
     position: relative;
-    width: 800px;
-    height:800px
+    width: 37.5rem;
+    height:37.5rem;
+    outline: 0.625rem solid #79c0d8;
 }

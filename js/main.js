@@ -58,6 +58,3 @@ function showTab(str){
     document.querySelector(str).classList.remove('hidden')
 }
 
-function onResize(){
-    
-}

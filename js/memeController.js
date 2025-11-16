@@ -86,6 +86,11 @@ function onNextText() {
     renderMeme()
 }
 
+function onResize(){
+    const displayWidth = parseInt(document.querySelector('body').width)
+    if(displayWidth < gElCanvas.width) renderMeme()
+}
+
 function renderInputs() {
     const line = getLine()
     if (!line) {
@@ -111,7 +116,6 @@ function renderMeme(meme = getMeme(), isSaved, idx) {
             <img src="${imgContent}" onclick="onEditMeme(${idx})"></img>
             <button style="display: flex; width: 200px" class="delete-btn fa-solid fa-trash" onclick="onDeleteMeme(${idx})"></button>
             </div>`
-
         }
     }
     img.src = imgSrc
@@ -127,7 +131,8 @@ function setCanvas() {
     gCtx = gElCanvas.getContext('2d')
     gElOverlayCanvas = document.querySelector('.overlay-canvas')
     gCtxOverlay = gElOverlayCanvas.getContext('2d')
-    gCtxOverlay.canvas.width = 800;
+    const {width} = getCanvasSize()
+    gCtxOverlay.canvas.width = width
 }
 
 function drawText(lines) {
@@ -176,7 +181,12 @@ function drawRect({ x, y, width, height }) {
 }
 
 function getCanvasSize() {
-    const { width, height } = gElCanvas
+    var { width, height } = gElCanvas
+    const displayWidth = parseInt(document.querySelector('body').width)
+    if(displayWidth < gElCanvas.width){
+        width = gElCanvas.clientWidth
+        height = gElCanvas.clientWidth
+    }
     return { width, height }
 }
 
